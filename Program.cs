@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace AllCardsOnDeckCS2
 {
@@ -27,9 +27,28 @@ namespace AllCardsOnDeckCS2
             }
 
 
-
+            // Confirm Deck Built
             Console.WriteLine("deck built");
 
+            // Shuffle
+            // Variables
+            int numberOfCards = deck.Count();
+            var randomNumberGenerator = new Random();
+
+            // Shuffle Algorithm
+            for (var rightIndex = numberOfCards - 1; rightIndex > 0; rightIndex--)
+            {
+                var LeftIndex = randomNumberGenerator.Next(rightIndex - 1);
+                var leftCard = deck[rightIndex];
+                var rightCard = deck[LeftIndex];
+                deck[rightIndex] = rightCard;
+                deck[LeftIndex] = leftCard;
+            }
+
+            foreach (var card in deck)
+            {
+                Console.WriteLine(card);
+            }
         }
     }
 }

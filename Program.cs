@@ -57,6 +57,8 @@ namespace AllCardsOnDeckCS2
             // Confirm Deck Built
             Console.WriteLine("deck built");
 
+            ShuffleDeck(cardDeck);
+
             foreach (var card in cardDeck)
             {
                 Console.WriteLine(card);

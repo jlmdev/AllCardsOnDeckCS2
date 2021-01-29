@@ -6,7 +6,7 @@ namespace AllCardsOnDeckCS2
 {
     class Program
     {
-        static void Main(string[] args)
+        public static List<string> CreateDeck()
         {
             // Declare Variables
             var deck = new List<string>();
@@ -22,30 +22,37 @@ namespace AllCardsOnDeckCS2
                     var cardSuit = suit[suitIndex];
                     var cardRank = rank[rankIndex];
                     deck.Add($"{cardRank}{cardSuit}");
-                    Console.WriteLine($"{cardRank}{cardSuit}");
+                    // Console.WriteLine($"{cardRank}{cardSuit}");
                 }
             }
+            return deck;
+        }
+        static void Main(string[] args)
+        {
 
+
+
+            var cardDeck = CreateDeck();
 
             // Confirm Deck Built
             Console.WriteLine("deck built");
 
             // Shuffle
             // Variables
-            int numberOfCards = deck.Count();
+            int numberOfCards = cardDeck.Count();
             var randomNumberGenerator = new Random();
 
             // Shuffle Algorithm
             for (var rightIndex = numberOfCards - 1; rightIndex > 0; rightIndex--)
             {
                 var LeftIndex = randomNumberGenerator.Next(rightIndex - 1);
-                var leftCard = deck[rightIndex];
-                var rightCard = deck[LeftIndex];
-                deck[rightIndex] = rightCard;
-                deck[LeftIndex] = leftCard;
+                var leftCard = cardDeck[rightIndex];
+                var rightCard = cardDeck[LeftIndex];
+                cardDeck[rightIndex] = rightCard;
+                cardDeck[LeftIndex] = leftCard;
             }
 
-            foreach (var card in deck)
+            foreach (var card in cardDeck)
             {
                 Console.WriteLine(card);
             }

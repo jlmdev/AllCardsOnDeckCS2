@@ -27,6 +27,26 @@ namespace AllCardsOnDeckCS2
             }
             return deck;
         }
+
+        public static List<string> ShuffleDeck(List<string> cardDeck)
+        {
+            int numberOfCards = cardDeck.Count();
+            var randomNumberGenerator = new Random();
+
+            // Shuffle Algorithm
+            for (var rightIndex = numberOfCards - 1; rightIndex > 0; rightIndex--)
+            {
+                var leftIndex = randomNumberGenerator.Next(rightIndex - 1);
+                var leftCard = cardDeck[rightIndex];
+                var rightCard = cardDeck[leftIndex];
+
+                // swap values in the deck itself
+                cardDeck[rightIndex] = rightCard;
+                cardDeck[leftIndex] = leftCard;
+            }
+
+            return cardDeck;
+        }
         static void Main(string[] args)
         {
 
@@ -36,21 +56,6 @@ namespace AllCardsOnDeckCS2
 
             // Confirm Deck Built
             Console.WriteLine("deck built");
-
-            // Shuffle
-            // Variables
-            int numberOfCards = cardDeck.Count();
-            var randomNumberGenerator = new Random();
-
-            // Shuffle Algorithm
-            for (var rightIndex = numberOfCards - 1; rightIndex > 0; rightIndex--)
-            {
-                var LeftIndex = randomNumberGenerator.Next(rightIndex - 1);
-                var leftCard = cardDeck[rightIndex];
-                var rightCard = cardDeck[LeftIndex];
-                cardDeck[rightIndex] = rightCard;
-                cardDeck[LeftIndex] = leftCard;
-            }
 
             foreach (var card in cardDeck)
             {

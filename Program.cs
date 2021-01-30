@@ -47,6 +47,8 @@ namespace AllCardsOnDeckCS2
 
             return cardDeck;
         }
+
+
         static void Main(string[] args)
         {
 
@@ -63,6 +65,8 @@ namespace AllCardsOnDeckCS2
             {
                 Console.WriteLine(card);
             }
+
+
         }
     }
 }
